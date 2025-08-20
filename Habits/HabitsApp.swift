@@ -10,9 +10,11 @@ import SwiftData
 
 @main
 struct HabitsApp: App {
+    @NSApplicationDelegateAdaptor(HabitsAppDelegate.self) var appDelegate
+    
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
-            Item.self,
+            HabitEvent.self,
         ])
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
 
@@ -24,9 +26,14 @@ struct HabitsApp: App {
     }()
 
     var body: some Scene {
-        WindowGroup {
+        MenuBarExtra("Habits") {
             ContentView()
-        }
-        .modelContainer(sharedModelContainer)
+        }.modelContainer(sharedModelContainer).menuBarExtraStyle(.window)
+    }
+}
+
+class HabitsAppDelegate: NSObject, NSApplicationDelegate{
+    func applicationDidFinishLaunching(_ notification: Notification) {
+        NSApp.setActivationPolicy(.accessory)
     }
 }
