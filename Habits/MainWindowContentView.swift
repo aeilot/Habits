@@ -17,13 +17,13 @@ struct MainWindowContentView: View {
             List {
                 ForEach(habitEvents) { event in
                     NavigationLink {
-                        Text("\(event.habitName)")
+                        HabitDetailView(habit: event)
                     } label: {
                         Text("\(event.habitName)")
                     }
                 }
                 .onDelete(perform: deleteItems)
-            }
+            }.lineSpacing(12)
             .toolbar {
                 ToolbarItem {
                     Button(action: addItem) {

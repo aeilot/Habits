@@ -48,7 +48,7 @@ final class HabitEvent {
     }
     
     @Transient public var color: Color {
-        Color(colorHex)
+        Color(hex: colorHex)
     }
     
     public init(habitName: String, colorHex: String, iconSystemName: String) {
@@ -66,5 +66,8 @@ final class HabitEvent {
         self.iconSystemName = iconSystemName
         self.checkDates = []
     }
-
+    
+    public static func getSampleDataForPreview() -> HabitEvent{
+        return HabitEvent(habitName: "New Habit", colorHex: "#0000FF", iconSystemName: "sun.max")
+    }
 }
