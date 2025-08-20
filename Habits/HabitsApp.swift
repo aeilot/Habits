@@ -26,8 +26,11 @@ struct HabitsApp: App {
     }()
 
     var body: some Scene {
-        MenuBarExtra("Habits") {
-            ContentView()
+        WindowGroup{
+            MainWindowContentView().modelContainer(sharedModelContainer)
+        }
+        MenuBarExtra("Habits", systemImage: "hammer") {
+            MenuBarContentView().frame(minHeight: 250)
         }.modelContainer(sharedModelContainer).menuBarExtraStyle(.window)
     }
 }

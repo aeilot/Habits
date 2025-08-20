@@ -8,32 +8,29 @@
 import SwiftUI
 import SwiftData
 
-struct ContentView: View {
+struct MainWindowContentView: View {
     @Environment(\.modelContext) private var modelContext
     @Query private var habitEvents: [HabitEvent]
 
     var body: some View {
-        NavigationSplitView {
+        NavigationStack {
             List {
                 ForEach(habitEvents) { event in
                     NavigationLink {
                         Text("\(event.habitName)")
                     } label: {
-                        Text("Hello")
+                        Text("\(event.habitName)")
                     }
                 }
                 .onDelete(perform: deleteItems)
             }
-            .navigationSplitViewColumnWidth(min: 180, ideal: 200)
             .toolbar {
                 ToolbarItem {
                     Button(action: addItem) {
                         Label("Add Item", systemImage: "plus")
                     }
                 }
-            }
-        } detail: {
-            Text("Select an item")
+            }.navigationTitle("Habits")
         }
     }
 
@@ -54,6 +51,6 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView()
+    MainWindowContentView()
         .modelContainer(for: HabitEvent.self, inMemory: true)
 }

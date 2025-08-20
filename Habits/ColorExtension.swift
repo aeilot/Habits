@@ -11,13 +11,15 @@ import SwiftUI
 
 extension Color {
     func toHexString() -> String? {
-        let nsColor = NSColor(self)
+        let nsColor = NSColor(self).usingColorSpace(.deviceRGB)
 
+        guard (nsColor != nil) else { return nil }
+        
         var r: CGFloat = 0
         var g: CGFloat = 0
         var b: CGFloat = 0
         var a: CGFloat = 0
-        nsColor.getRed(&r, green: &g, blue: &b, alpha: &a)
+        nsColor?.getRed(&r, green: &g, blue: &b, alpha: &a)
 
         let red = Int(r * 255)
         let green = Int(g * 255)
