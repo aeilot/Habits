@@ -27,8 +27,10 @@ struct HabitsApp: App {
 
     var body: some Scene {
         WindowGroup{
-            MainWindowContentView().modelContainer(sharedModelContainer)
-        }
+            MainWindowContentView()
+                .modelContainer(sharedModelContainer)
+        }.defaultSize(width: 180, height: 450).windowResizability(.contentSize)
+        
         MenuBarExtra("Habits", systemImage: "hammer") {
             MenuBarContentView().frame(minHeight: 250)
         }.modelContainer(sharedModelContainer).menuBarExtraStyle(.window)
@@ -37,6 +39,7 @@ struct HabitsApp: App {
 
 class HabitsAppDelegate: NSObject, NSApplicationDelegate{
     func applicationDidFinishLaunching(_ notification: Notification) {
+        // Insert code here to initialize your application
 //        NSApp.setActivationPolicy(.accessory)
     }
 }

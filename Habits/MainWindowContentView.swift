@@ -13,25 +13,26 @@ struct MainWindowContentView: View {
     @Query private var habitEvents: [HabitEvent]
 
     var body: some View {
-        NavigationStack {
-            List {
-                ForEach(habitEvents) { event in
-                    NavigationLink {
-                        HabitDetailView(habit: event)
-                    } label: {
-                        Text("\(event.habitName)")
-                    }
+            NavigationStack {
+                List {
+                    ForEach(habitEvents) { event in
+                        NavigationLink {
+                            HabitDetailView(habit: event)
+                        } label: {
+                            HabitListItemView(habit: event)
+                        }
+                    }.onDelete(perform: deleteItems)
                 }
-                .onDelete(perform: deleteItems)
-            }.lineSpacing(12)
-            .toolbar {
-                ToolbarItem {
-                    Button(action: addItem) {
-                        Label("Add Item", systemImage: "plus")
+                .frame(minWidth: 300)
+                .listStyle(.inset)
+                .toolbar {
+                    ToolbarItem {
+                        Button(action: addItem) {
+                            Label("Add Item", systemImage: "plus")
+                        }
                     }
-                }
-            }.navigationTitle("Habits")
-        }
+                }.navigationTitle("Habits")
+            }.frame(minWidth: 300, idealWidth: 400, maxWidth: 500, minHeight: 300, alignment: .leading)
     }
 
     private func addItem() {

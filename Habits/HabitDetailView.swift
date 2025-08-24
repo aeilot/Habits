@@ -14,17 +14,20 @@ struct HabitDetailView: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 12){
-            ZStack{
-                Circle().foregroundStyle(habit.color).frame(width: 35, height: 35)
-                Image(systemName: habit.iconSystemName).font(.title3).foregroundStyle(.white)
-                    .sheet(isPresented: $isPresented, content: {
-                        SymbolsPicker(selection: $habit.iconSystemName, title: "Pick a symbol", autoDismiss: true)
-                    }).padding()
-            }.onTapGesture {
-                isPresented = true
+            HStack{
+                ZStack{
+                    Circle().foregroundStyle(habit.color).frame(width: 35, height: 35)
+                    Image(systemName: habit.iconSystemName).font(.title3).foregroundStyle(.white)
+                        .sheet(isPresented: $isPresented, content: {
+                            SymbolsPicker(selection: $habit.iconSystemName, title: "Pick a symbol", autoDismiss: true)
+                        }).padding()
+                }.onTapGesture {
+                    isPresented = true
+                }
+                TextField("Habit Name", text: $habit.habitName)
             }
-            TextField("Habit Name", text: $habit.habitName)
             Text("Created \(habit.createDate.formatted())")
+            Spacer()
         }.padding()
     }
 }
