@@ -24,9 +24,9 @@ extension Color {
         let red = Int(r * 255)
         let green = Int(g * 255)
         let blue = Int(b * 255)
-        let alpha = Int(a * 255)
+//        let alpha = Int(a * 255)
 
-        return String(format: "#%02X%02X%02X%02X", red, green, blue, alpha)
+        return String(format: "%02X%02X%02X", red, green, blue)
     }
     
     init(hex: String) {
