@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E376308D2E558390003731BB /* SFSymbolsPicker in Frameworks */ = {isa = PBXBuildFile; productRef = E376308C2E558390003731BB /* SFSymbolsPicker */; };
+		E32B350C2E5B0BAF00F472A7 /* SymbolPicker in Frameworks */ = {isa = PBXBuildFile; productRef = E32B350B2E5B0BAF00F472A7 /* SymbolPicker */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,7 +27,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E376308D2E558390003731BB /* SFSymbolsPicker in Frameworks */,
+				E32B350C2E5B0BAF00F472A7 /* SymbolPicker in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,7 +70,7 @@
 			);
 			name = Habits;
 			packageProductDependencies = (
-				E376308C2E558390003731BB /* SFSymbolsPicker */,
+				E32B350B2E5B0BAF00F472A7 /* SymbolPicker */,
 			);
 			productName = Habits;
 			productReference = E31FE3E12E544014006805D0 /* Habits.app */;
@@ -101,7 +101,7 @@
 			mainGroup = E31FE3D82E544014006805D0;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
-				E376308B2E558390003731BB /* XCRemoteSwiftPackageReference "SFSymbolsPicker" */,
+				E32B350A2E5B0BAF00F472A7 /* XCRemoteSwiftPackageReference "SymbolPicker" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = E31FE3E22E544014006805D0 /* Products */;
@@ -336,21 +336,21 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		E376308B2E558390003731BB /* XCRemoteSwiftPackageReference "SFSymbolsPicker" */ = {
+		E32B350A2E5B0BAF00F472A7 /* XCRemoteSwiftPackageReference "SymbolPicker" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/alessiorubicini/SFSymbolsPicker";
+			repositoryURL = "https://github.com/xnth97/SymbolPicker.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.7;
+				minimumVersion = 1.6.2;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		E376308C2E558390003731BB /* SFSymbolsPicker */ = {
+		E32B350B2E5B0BAF00F472A7 /* SymbolPicker */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = E376308B2E558390003731BB /* XCRemoteSwiftPackageReference "SFSymbolsPicker" */;
-			productName = SFSymbolsPicker;
+			package = E32B350A2E5B0BAF00F472A7 /* XCRemoteSwiftPackageReference "SymbolPicker" */;
+			productName = SymbolPicker;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

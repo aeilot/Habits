@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import SFSymbolsPicker
+import SymbolPicker
 
 struct HabitDetailView: View {
     @Bindable var habit: HabitEvent
@@ -19,9 +19,11 @@ struct HabitDetailView: View {
                     Circle().foregroundStyle(habit.color).frame(width: 35, height: 35)
                     Image(systemName: habit.iconSystemName).font(.title3).foregroundStyle(.white)
                         .sheet(isPresented: $isPresented, content: {
-                            SymbolsPicker(selection: $habit.iconSystemName, title: "Pick a symbol", autoDismiss: true){
-                                Text("Close")
-                            }
+                            VStack(alignment: .center){
+                                SymbolPicker(symbol: $habit.iconSystemName)
+                                ColorPicker("Color", selection: $habit.color, supportsOpacity: false).background(.regularMaterial)
+                                Spacer()
+                            }.background(.regularMaterial)
                         }).padding()
                 }.onTapGesture {
                     isPresented = true

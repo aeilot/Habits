@@ -48,7 +48,13 @@ final class HabitEvent {
     }
     
     @Transient public var color: Color {
-        Color(hex: colorHex)
+        get{
+            Color(hex: colorHex)
+        }
+        
+        set(newColor){
+            self.colorHex = newColor.toHexString() ?? "007AFF"
+        }
     }
     
     public init(habitName: String, colorHex: String, iconSystemName: String) {
