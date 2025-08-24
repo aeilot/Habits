@@ -8,10 +8,15 @@
 import SwiftUI
 
 struct HabitListItemView: View {
-    @Bindable var habit: HabitEvent
+    @State var habit: HabitEvent
     
     var body: some View {
-        Text("\(habit.habitName)")
+        HStack{
+            IconView(habit: habit, iconSize: 25)
+            Text("\(habit.habitName)").bold()
+            Spacer()
+            Text("\(habit.streak) Days Streak.").foregroundStyle(.secondary)
+        }
     }
 }
 

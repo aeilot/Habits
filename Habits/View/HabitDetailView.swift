@@ -15,17 +15,14 @@ struct HabitDetailView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 12){
             HStack{
-                ZStack{
-                    Circle().foregroundStyle(habit.color).frame(width: 35, height: 35)
-                    Image(systemName: habit.iconSystemName).font(.title3).foregroundStyle(.white)
-                        .sheet(isPresented: $isPresented, content: {
-                            VStack(alignment: .center){
-                                SymbolPicker(symbol: $habit.iconSystemName)
-                                ColorPicker("Color", selection: $habit.color, supportsOpacity: false).background(.regularMaterial)
-                                Spacer()
-                            }.background(.regularMaterial)
-                        }).padding()
-                }.onTapGesture {
+                IconView(habit: habit).sheet(isPresented: $isPresented, content: {
+                    VStack(alignment: .center){
+                        SymbolPicker(symbol: $habit.iconSystemName)
+                        ColorPicker("Color", selection: $habit.color, supportsOpacity: false).background(.regularMaterial)
+                        Spacer()
+                    }.background(.regularMaterial)
+                }).padding()
+.onTapGesture {
                     isPresented = true
                 }
                 TextField("Habit Name", text: $habit.habitName)
