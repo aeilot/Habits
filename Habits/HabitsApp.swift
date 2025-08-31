@@ -2,7 +2,7 @@
 //  HabitsApp.swift
 //  Habits
 //
-//  Created by 邓陈珞 on 8/19/25.
+//  Created by Chenluo Deng on 8/19/25.
 //
 
 import SwiftUI

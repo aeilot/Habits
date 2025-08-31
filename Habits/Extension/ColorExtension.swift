@@ -2,7 +2,7 @@
 //  ColorExtension.swift
 //  Habits
 //
-//  Created by 邓陈珞 on 8/20/25.
+//  Created by Chenluo Deng on 8/20/25.
 //
 
 import Foundation
