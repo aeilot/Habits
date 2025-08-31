@@ -9,6 +9,8 @@ import SwiftUI
 import SwiftData
 
 struct MenuBarContentView: View {
+    @Environment(\.openWindow) private var openWindow
+    
     @Environment(\.modelContext) private var modelContext
     @Query private var habits: [HabitEvent]
     
@@ -16,21 +18,28 @@ struct MenuBarContentView: View {
         let calendar = Calendar.current
         let today = calendar.startOfDay(for: Date())
         
-        return today.formatted()
+        return today.formatted(date: .abbreviated, time: .omitted)
+    }
+    
+    func buttonAction() {
+        openWindow(id: "mainWindow")
     }
     
     var body: some View {
-        ScrollView{
+        VStack {
             HStack{
                 Text("\(getFormattedDate())").font(.headline)
                 Spacer()
-                Button("APP") {
-                    
+                Button(action: buttonAction) {
+                    Image(systemName: "house")
                 }
-            }
-            VStack(alignment: .leading, spacing: 8) {
-                ForEach(habits) { habit in
-                    ExtractedView(habit: habit)
+            }.frame(height: 25)
+            
+            ScrollView{
+                VStack(alignment: .leading, spacing: 8) {
+                    ForEach(habits) { habit in
+                        ExtractedView(habit: habit)
+                    }
                 }
             }
         }
