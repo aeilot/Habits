@@ -26,7 +26,7 @@ struct HabitsApp: App {
     }()
 
     var body: some Scene {
-        WindowGroup{
+        WindowGroup(id: "mainWindow"){
             MainWindowContentView()
                 .modelContainer(sharedModelContainer)
         }.defaultSize(width: 180, height: 450).windowResizability(.contentSize)
