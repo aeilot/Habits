@@ -12,24 +12,25 @@ struct MenuBarContentView: View {
     @Environment(\.modelContext) private var modelContext
     @Query private var habits: [HabitEvent]
     
+    func getFormattedDate() -> String {
+        let calendar = Calendar.current
+        let today = calendar.startOfDay(for: Date())
+        
+        return today.formatted()
+    }
+    
     var body: some View {
         ScrollView{
+            HStack{
+                Text("\(getFormattedDate())").font(.headline)
+                Spacer()
+                Button("APP") {
+                    
+                }
+            }
             VStack(alignment: .leading, spacing: 8) {
                 ForEach(habits) { habit in
-                    HStack(spacing: 12) {
-                        IconView(habit: habit)
-                        Text(habit.habitName)
-                            .font(.headline)
-                        Spacer()
-                        Text("\(habit.streak) 🔥")
-                            .font(.subheadline)
-                            .foregroundColor(.secondary)
-                    }
-                    .padding(8)
-                    .background(
-                        RoundedRectangle(cornerRadius: 6)
-                            .fill(Color.gray.opacity(0.15))
-                    )
+                    ExtractedView(habit: habit)
                 }
             }
         }
@@ -42,4 +43,33 @@ struct MenuBarContentView: View {
 #Preview {
     MenuBarContentView()
         .modelContainer(for: HabitEvent.self, inMemory: true)
+}
+
+struct ExtractedView: View {
+    @State var habit: HabitEvent
+    var fillColor: Color {
+        if habit.checkedToday {
+            return Color.blue.opacity(0.15)
+        }
+        return Color.gray.opacity(0.15)
+    }
+    
+    var body: some View {
+        HStack(spacing: 12) {
+            IconView(habit: habit)
+            Text(habit.habitName)
+                .font(.headline)
+            Spacer()
+            Text("\(habit.streak) 🔥")
+                .font(.subheadline)
+                .foregroundColor(.secondary)
+        }
+        .padding(8)
+        .background(
+            RoundedRectangle(cornerRadius: 6)
+                .fill(fillColor)
+        ).onTapGesture {
+            habit.checkedToday.toggle()
+        }
+    }
 }

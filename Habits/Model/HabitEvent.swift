@@ -17,10 +17,6 @@ final class HabitEvent {
     public var iconSystemName: String
     var checkDates: [Date]
     
-    public func checkToday(){
-        checkDates.append(Date())
-    }
-    
     @Transient public var streak: Int {
         let calendar = Calendar.current
         let today = calendar.startOfDay(for: Date())
@@ -54,6 +50,26 @@ final class HabitEvent {
         
         set(newColor){
             self.colorHex = newColor.toHexString() ?? "007AFF"
+        }
+    }
+    
+    @Transient var checkedToday: Bool{
+        get {
+            let calendar = Calendar.current
+            let today = calendar.startOfDay(for: Date())
+            
+            return checkDates.contains(today)
+        }
+        
+        set(newBool) {
+            let calendar = Calendar.current
+            let today = calendar.startOfDay(for: Date())
+            
+            if newBool {
+                checkDates.append(today)
+            } else {
+                checkDates.removeLast()
+            }
         }
     }
     
