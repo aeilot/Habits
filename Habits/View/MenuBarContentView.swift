@@ -32,7 +32,7 @@ struct MenuBarContentView: View {
                 Spacer()
                 Button(action: buttonAction) {
                     Image(systemName: "house")
-                }
+                }.focusable(false).buttonStyle(.borderless)
             }.frame(height: 25)
             
             ScrollView{
@@ -65,7 +65,7 @@ struct ExtractedView: View {
     
     var body: some View {
         HStack(spacing: 12) {
-            IconView(habit: habit)
+            IconView(habit: habit).symbolEffect(.bounce, value: habit.checkedToday)
             Text(habit.habitName)
                 .font(.headline)
             Spacer()
@@ -78,7 +78,9 @@ struct ExtractedView: View {
             RoundedRectangle(cornerRadius: 6)
                 .fill(fillColor)
         ).onTapGesture {
-            habit.checkedToday.toggle()
+            withAnimation{
+                habit.checkedToday.toggle()
+            }
         }
     }
 }
