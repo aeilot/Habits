@@ -6,7 +6,7 @@ Habits is a macOS Habit Tracker APP designed for the menu bar. Built with SwiftU
 
 ## Roadmap
 
-- [*] Basic Features
+- [x] Basic Features
 - [ ] StreakView
 - [ ] AI Agent
 
