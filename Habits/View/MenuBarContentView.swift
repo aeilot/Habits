@@ -22,6 +22,7 @@ struct MenuBarContentView: View {
     }
     
     func buttonAction() {
+        NSApplication.shared.activate(ignoringOtherApps: true)
         openWindow(id: "mainWindow")
     }
     
@@ -58,7 +59,7 @@ struct ExtractedView: View {
     @State var habit: HabitEvent
     var fillColor: Color {
         if habit.checkedToday {
-            return Color.blue.opacity(0.15)
+            return habit.color.opacity(0.15)
         }
         return Color.gray.opacity(0.15)
     }

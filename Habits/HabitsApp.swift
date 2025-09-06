@@ -26,7 +26,7 @@ struct HabitsApp: App {
     }()
 
     var body: some Scene {
-        WindowGroup(id: "mainWindow"){
+        Window("Habits", id: "mainWindow"){
             MainWindowContentView()
                 .modelContainer(sharedModelContainer)
         }.defaultSize(width: 180, height: 450).windowResizability(.contentSize)
@@ -34,6 +34,7 @@ struct HabitsApp: App {
         MenuBarExtra("Habits", systemImage: "hammer") {
             MenuBarContentView().frame(minHeight: 250)
         }.modelContainer(sharedModelContainer).menuBarExtraStyle(.window)
+        
     }
 }
 
