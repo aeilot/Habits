@@ -67,20 +67,15 @@ struct StreakView: View {
     }
     
     private var weekView: some View {
-        VStack(spacing: 8) {
-            // Day labels
-            HStack {
-                ForEach(0..<7) { index in
+        HStack(spacing: 4) {
+            Spacer()
+            ForEach(Array(streakData.enumerated()), id: \.offset) { index, dayData in
+                VStack{
                     Text(dayOfWeekLabel(for: index))
                         .font(.caption)
                         .foregroundColor(.secondary)
                         .frame(width: 30)
-                }
-            }
-            
-            // Streak squares
-            HStack(spacing: 4) {
-                ForEach(Array(streakData.enumerated()), id: \.offset) { index, dayData in
+
                     StreakSquare(
                         date: dayData.date,
                         completed: dayData.completed,
@@ -89,6 +84,7 @@ struct StreakView: View {
                     )
                 }
             }
+            Spacer()
         }
     }
     
