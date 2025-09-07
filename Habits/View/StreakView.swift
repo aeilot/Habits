@@ -15,9 +15,9 @@ struct StreakView: View {
             HStack{
                 ForEach(data, id: \.description){ item in
                     if item {
-                        RoundedRectangle(cornerRadius: 5).frame(width: 25, height: 25).foregroundStyle(.green)
+                        RoundedRectangle(cornerRadius: 5).frame(width: 25, height: 25).foregroundStyle(.green).opacity(0.8)
                     } else {
-                        RoundedRectangle(cornerRadius: 5).frame(width: 25, height: 25).foregroundStyle(.secondary)
+                        RoundedRectangle(cornerRadius: 5).frame(width: 25, height: 25).foregroundStyle(.gray).opacity(0.3)
                     }
                 }
             }
