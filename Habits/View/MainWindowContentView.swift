@@ -11,28 +11,39 @@ import SwiftData
 struct MainWindowContentView: View {
     @Environment(\.modelContext) private var modelContext
     @Query private var habitEvents: [HabitEvent]
+    @State private var showAIChat: Bool = false
 
     var body: some View {
-            NavigationStack {
-                List {
-                    ForEach(habitEvents) { event in
-                        NavigationLink {
-                            HabitDetailView(habit: event)
-                        } label: {
-                            HabitListItemView(habit: event)
-                        }
-                    }.onDelete(perform: deleteItems)
-                }
-                .frame(minWidth: 300)
-                .listStyle(.inset)
-                .toolbar {
-                    ToolbarItem {
-                        Button(action: addItem) {
-                            Label("Add Item", systemImage: "plus")
-                        }
+        NavigationStack {
+            List {
+                ForEach(habitEvents) { event in
+                    NavigationLink {
+                        HabitDetailView(habit: event)
+                    } label: {
+                        HabitListItemView(habit: event)
                     }
-                }.navigationTitle("Habits")
-            }.frame(minWidth: 300, idealWidth: 400, maxWidth: 500, minHeight: 300, alignment: .leading)
+                }.onDelete(perform: deleteItems)
+            }
+            .frame(minWidth: 300)
+            .listStyle(.inset)
+            .toolbar {
+                ToolbarItem {
+                    Button(action: { showAIChat = true }) {
+                        Label("Ask AI", systemImage: "message")
+                    }
+                }
+                ToolbarItem {
+                    Button(action: addItem) {
+                        Label("Add Item", systemImage: "plus")
+                    }
+                }
+            }
+            .navigationTitle("Habits")
+        }
+        .frame(minWidth: 300, idealWidth: 400, maxWidth: 500, minHeight: 300, alignment: .leading)
+        .sheet(isPresented: $showAIChat) {
+            AIChatView()
+        }
     }
 
     private func addItem() {

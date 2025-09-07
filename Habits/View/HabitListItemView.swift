@@ -18,7 +18,7 @@ struct HabitListItemView: View {
                 CompactStreakView(habit: habit)
             }
             Spacer()
-            Text("\(habit.streak) Days Streak.").foregroundStyle(.secondary)
+            Text("\(habit.streak) Days Streak").foregroundStyle(.secondary)
         }
     }
 }
