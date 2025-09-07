@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import AppKit
 
 enum StreakViewPeriod: String, CaseIterable {
     case week = "Week"
