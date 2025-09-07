@@ -95,7 +95,7 @@ struct StreakView: View {
     private var monthView: some View {
         let columns = Array(repeating: GridItem(.flexible(), spacing: 2), count: 7)
         
-        VStack(spacing: 8) {
+        return VStack(spacing: 8) {
             // Month header
             Text(monthYearFormatter.string(from: streakData.first?.date ?? Date()))
                 .font(.subheadline)
