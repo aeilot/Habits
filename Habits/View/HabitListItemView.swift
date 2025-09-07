@@ -11,9 +11,12 @@ struct HabitListItemView: View {
     @State var habit: HabitEvent
     
     var body: some View {
-        HStack{
+        HStack {
             IconView(habit: habit, iconSize: 25)
-            Text("\(habit.habitName)").bold()
+            VStack(alignment: .leading, spacing: 2) {
+                Text("\(habit.habitName)").bold()
+                CompactStreakView(habit: habit)
+            }
             Spacer()
             Text("\(habit.streak) Days Streak.").foregroundStyle(.secondary)
         }
