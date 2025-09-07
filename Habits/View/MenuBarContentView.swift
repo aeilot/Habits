@@ -67,8 +67,11 @@ struct ExtractedView: View {
     var body: some View {
         HStack(spacing: 12) {
             IconView(habit: habit).symbolEffect(.bounce, value: habit.checkedToday)
-            Text(habit.habitName)
-                .font(.headline)
+            VStack(alignment: .leading, spacing: 2) {
+                Text(habit.habitName)
+                    .font(.headline)
+                CompactStreakView(habit: habit)
+            }
             Spacer()
             Text("\(habit.streak) 🔥")
                 .font(.subheadline)

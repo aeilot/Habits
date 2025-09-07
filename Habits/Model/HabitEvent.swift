@@ -89,7 +89,92 @@ final class HabitEvent {
         self.checkDates = []
     }
     
+    // MARK: - Streak Data Generation Methods
+    
+    /// Returns streak data for the last N days
+    func getStreakData(forLastDays days: Int) -> [(date: Date, completed: Bool)] {
+        let calendar = Calendar.current
+        let today = calendar.startOfDay(for: Date())
+        let normalizedCheckDates = Set(checkDates.map { calendar.startOfDay(for: $0) })
+        
+        var streakData: [(date: Date, completed: Bool)] = []
+        
+        for i in (0..<days).reversed() {
+            if let date = calendar.date(byAdding: .day, value: -i, to: today) {
+                let completed = normalizedCheckDates.contains(date)
+                streakData.append((date: date, completed: completed))
+            }
+        }
+        
+        return streakData
+    }
+    
+    /// Returns streak data for the current week (Sunday to Saturday)
+    func getWeekStreakData() -> [(date: Date, completed: Bool)] {
+        let calendar = Calendar.current
+        let today = Date()
+        
+        guard let weekInterval = calendar.dateInterval(of: .weekOfYear, for: today) else {
+            return getStreakData(forLastDays: 7)
+        }
+        
+        let startOfWeek = weekInterval.start
+        let normalizedCheckDates = Set(checkDates.map { calendar.startOfDay(for: $0) })
+        
+        var streakData: [(date: Date, completed: Bool)] = []
+        
+        for i in 0..<7 {
+            if let date = calendar.date(byAdding: .day, value: i, to: startOfWeek) {
+                let normalizedDate = calendar.startOfDay(for: date)
+                let completed = normalizedCheckDates.contains(normalizedDate)
+                streakData.append((date: normalizedDate, completed: completed))
+            }
+        }
+        
+        return streakData
+    }
+    
+    /// Returns streak data for the current month
+    func getMonthStreakData() -> [(date: Date, completed: Bool)] {
+        let calendar = Calendar.current
+        let today = Date()
+        
+        guard let monthInterval = calendar.dateInterval(of: .month, for: today) else {
+            return getStreakData(forLastDays: 30)
+        }
+        
+        let startOfMonth = monthInterval.start
+        let endOfMonth = monthInterval.end
+        let normalizedCheckDates = Set(checkDates.map { calendar.startOfDay(for: $0) })
+        
+        var streakData: [(date: Date, completed: Bool)] = []
+        var currentDate = startOfMonth
+        
+        while currentDate < endOfMonth {
+            let normalizedDate = calendar.startOfDay(for: currentDate)
+            let completed = normalizedCheckDates.contains(normalizedDate)
+            streakData.append((date: normalizedDate, completed: completed))
+            
+            guard let nextDay = calendar.date(byAdding: .day, value: 1, to: currentDate) else { break }
+            currentDate = nextDay
+        }
+        
+        return streakData
+    }
+    
     public static func getSampleDataForPreview() -> HabitEvent{
-        return HabitEvent(habitName: "New Habit", colorHex: "#0000FF", iconSystemName: "sun.max")
+        let habit = HabitEvent(habitName: "New Habit", colorHex: "#0000FF", iconSystemName: "sun.max")
+        
+        // Add some sample check dates for better preview
+        let calendar = Calendar.current
+        let today = calendar.startOfDay(for: Date())
+        
+        for i in [0, 1, 3, 5, 7, 8, 10] {
+            if let date = calendar.date(byAdding: .day, value: -i, to: today) {
+                habit.checkDates.append(date)
+            }
+        }
+        
+        return habit
     }
 }
