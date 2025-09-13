@@ -10,7 +10,15 @@ import SwiftData
 import SwiftUI
 
 @Model
-final class HabitEvent {
+final class HabitEvent: Codable {
+    public enum CodingKeys: CodingKey {
+        case habitName
+        case createDate
+        case colorHex
+        case iconSystemName
+        case checkDates
+    }
+    
     public var habitName: String
     public var createDate: Date
     public var colorHex: String
@@ -87,6 +95,24 @@ final class HabitEvent {
         self.colorHex = color.toHexString() ?? "#0000FFFF"
         self.iconSystemName = iconSystemName
         self.checkDates = []
+    }
+    
+    required init(from decoder: Decoder) throws{
+        let container = try! decoder.container(keyedBy: CodingKeys.self)
+        self.habitName = try! container.decode(String.self, forKey: .habitName)
+        self.createDate = try! container.decode(Date.self, forKey: .createDate)
+        self.colorHex = try! container.decode(String.self, forKey: .colorHex)
+        self.iconSystemName = try! container.decode(String.self, forKey: .iconSystemName)
+        self.checkDates = try! container.decode([Date].self, forKey: .checkDates)
+    }
+    
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try! container.encode(habitName, forKey: .habitName)
+        try! container.encode(createDate, forKey: .createDate)
+        try! container.encode(colorHex, forKey: .colorHex)
+        try! container.encode(iconSystemName, forKey: .iconSystemName)
+        try! container.encode(checkDates, forKey: .checkDates)
     }
     
     // MARK: - Streak Data Generation Methods

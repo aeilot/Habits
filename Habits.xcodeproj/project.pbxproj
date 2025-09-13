@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		E32B350C2E5B0BAF00F472A7 /* SymbolPicker in Frameworks */ = {isa = PBXBuildFile; productRef = E32B350B2E5B0BAF00F472A7 /* SymbolPicker */; };
+		E387A12C2E74F2F4003D11BE /* OpenAI in Frameworks */ = {isa = PBXBuildFile; productRef = E387A12B2E74F2F4003D11BE /* OpenAI */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E387A12C2E74F2F4003D11BE /* OpenAI in Frameworks */,
 				E32B350C2E5B0BAF00F472A7 /* SymbolPicker in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -71,6 +73,7 @@
 			name = Habits;
 			packageProductDependencies = (
 				E32B350B2E5B0BAF00F472A7 /* SymbolPicker */,
+				E387A12B2E74F2F4003D11BE /* OpenAI */,
 			);
 			productName = Habits;
 			productReference = E31FE3E12E544014006805D0 /* Habits.app */;
@@ -102,6 +105,7 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				E32B350A2E5B0BAF00F472A7 /* XCRemoteSwiftPackageReference "SymbolPicker" */,
+				E387A12A2E74F2F4003D11BE /* XCRemoteSwiftPackageReference "OpenAI" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = E31FE3E22E544014006805D0 /* Products */;
@@ -263,11 +267,12 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = N5R4643XP6;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -292,11 +297,12 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = N5R4643XP6;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -344,6 +350,14 @@
 				minimumVersion = 1.6.2;
 			};
 		};
+		E387A12A2E74F2F4003D11BE /* XCRemoteSwiftPackageReference "OpenAI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/MacPaw/OpenAI.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.4.6;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -351,6 +365,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = E32B350A2E5B0BAF00F472A7 /* XCRemoteSwiftPackageReference "SymbolPicker" */;
 			productName = SymbolPicker;
+		};
+		E387A12B2E74F2F4003D11BE /* OpenAI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E387A12A2E74F2F4003D11BE /* XCRemoteSwiftPackageReference "OpenAI" */;
+			productName = OpenAI;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
