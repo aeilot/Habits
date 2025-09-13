@@ -35,6 +35,9 @@ struct HabitsApp: App {
             MenuBarContentView().frame(minHeight: 250)
         }.modelContainer(sharedModelContainer).menuBarExtraStyle(.window)
         
+        Window("Settings", id: "settingsWindow") {
+            SettingsView()
+        }.keyboardShortcut(",").defaultSize(width: 300, height: 120)
     }
 }
 
