@@ -66,8 +66,11 @@ class ChatViewModel: ObservableObject {
     }
     
     private func generateAIResponse(for message: String) async throws -> String {
-        guard let openAI = openAI else {
-            throw ChatError.noAPIKeyConfigured
+        // If no OpenAI instance is configured, provide a mock response
+        guard let openAI = openAI, llmProvider.apiKey != "your-api-key-here" else {
+            // Mock response when API key is not configured
+            try await Task.sleep(nanoseconds: 1_000_000_000) // Simulate API delay
+            return generateMockResponse(for: message)
         }
         
         // Create context from habit events using ModelUtils
@@ -94,6 +97,25 @@ class ChatViewModel: ObservableObject {
         
         let result = try await openAI.chats(query: query)
         return result.choices.first?.message.content?.string ?? "I'm sorry, I couldn't generate a response."
+    }
+    
+    private func generateMockResponse(for message: String) -> String {
+        let habitContext = ModelUtils.toJSON(habits: habitEvents) ?? "No habit data available"
+        
+        if message.lowercased().contains("habit") {
+            if habitEvents.isEmpty {
+                return "I see you haven't started tracking any habits yet! Creating your first habit is a great step toward building positive routines. Would you like some suggestions for good habits to start with?"
+            } else {
+                let habitCount = habitEvents.count
+                let totalCheckDates = habitEvents.reduce(0) { $0 + $1.checkDates.count }
+                return "I can see you're tracking \(habitCount) habit\(habitCount == 1 ? "" : "s") with a total of \(totalCheckDates) check-ins! That's great progress. What specific aspect of your habits would you like to discuss?"
+            }
+        } else if message.lowercased().contains("streak") {
+            let bestStreak = habitEvents.map { $0.streak }.max() ?? 0
+            return "Your best current streak is \(bestStreak) days! \(bestStreak > 0 ? "Keep up the great work!" : "Don't worry, every expert was once a beginner. Start small and stay consistent!")"
+        } else {
+            return "I'm here to help you with your habit tracking journey! Ask me about your habits, streaks, or tips for building better routines. (Note: This is a demo response - configure your OpenAI API key for full functionality)"
+        }
     }
     
     func clearMessages() {

@@ -14,16 +14,48 @@ struct AIChatView: View {
             VStack(spacing: 0) {
                 // Messages List
                 ScrollViewReader { proxy in
-                    List(viewModel.messages) { message in
-                        MessageRowView(message: message)
-                            .listRowSeparator(.hidden)
-                            .id(message.id)
-                    }
-                    .listStyle(.plain)
-                    .onChange(of: viewModel.messages.count) { _, _ in
-                        if let lastMessage = viewModel.messages.last {
-                            withAnimation(.easeInOut(duration: 0.3)) {
-                                proxy.scrollTo(lastMessage.id, anchor: .bottom)
+                    if viewModel.messages.isEmpty {
+                        VStack(spacing: 16) {
+                            Image(systemName: "message.circle")
+                                .font(.system(size: 50))
+                                .foregroundColor(.blue)
+                            
+                            Text("Welcome to AI Chat!")
+                                .font(.title2)
+                                .fontWeight(.semibold)
+                            
+                            Text("I can help you analyze your habits, provide insights, and answer questions about your habit tracking journey.")
+                                .font(.body)
+                                .foregroundColor(.secondary)
+                                .multilineTextAlignment(.center)
+                                .padding(.horizontal)
+                            
+                            Text("Start by asking me something like:")
+                                .font(.caption)
+                                .foregroundColor(.secondary)
+                            
+                            VStack(alignment: .leading, spacing: 4) {
+                                Text("• How are my habits going?")
+                                Text("• What's my best streak?")
+                                Text("• Tips for better habits?")
+                            }
+                            .font(.caption)
+                            .foregroundColor(.secondary)
+                        }
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        .padding()
+                    } else {
+                        List(viewModel.messages) { message in
+                            MessageRowView(message: message)
+                                .listRowSeparator(.hidden)
+                                .id(message.id)
+                        }
+                        .listStyle(.plain)
+                        .onChange(of: viewModel.messages.count) { _, _ in
+                            if let lastMessage = viewModel.messages.last {
+                                withAnimation(.easeInOut(duration: 0.3)) {
+                                    proxy.scrollTo(lastMessage.id, anchor: .bottom)
+                                }
                             }
                         }
                     }
@@ -57,12 +89,19 @@ struct AIChatView: View {
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                         .lineLimit(1...4)
                         .onSubmit {
-                            viewModel.sendMessage()
+                            if !viewModel.isLoading {
+                                viewModel.sendMessage()
+                            }
                         }
+                        .disabled(viewModel.isLoading)
                     
-                    Button("Send") {
+                    Button(action: {
                         viewModel.sendMessage()
+                    }) {
+                        Image(systemName: "paperplane.fill")
+                            .foregroundColor(.white)
                     }
+                    .buttonStyle(.borderedProminent)
                     .disabled(viewModel.currentInput.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || viewModel.isLoading)
                 }
                 .padding()
