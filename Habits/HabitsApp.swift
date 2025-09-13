@@ -31,7 +31,7 @@ struct HabitsApp: App {
                 .modelContainer(sharedModelContainer)
         }.defaultSize(width: 300, height: 450).windowResizability(.contentSize)
         
-        MenuBarExtra("Habits", systemImage: "hammer") {
+        MenuBarExtra("Habits", systemImage: "calendar") {
             MenuBarContentView().frame(minHeight: 250)
         }.modelContainer(sharedModelContainer).menuBarExtraStyle(.window)
         

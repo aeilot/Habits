@@ -1,0 +1,83 @@
+{
+  "fill" : {
+    "linear-gradient" : [
+      "extended-gray:0.75000,1.00000",
+      "extended-srgb:0.00000,0.78431,0.70196,1.00000"
+    ]
+  },
+  "groups" : [
+    {
+      "layers" : [
+        {
+          "blend-mode" : "normal",
+          "fill" : "automatic",
+          "image-name" : "2025-09-13_10-51-39.png",
+          "name" : "2025-09-13_10-51-39",
+          "position" : {
+            "scale" : 0.7,
+            "translation-in-points" : [
+              0,
+              -216.3993959449115
+            ]
+          }
+        },
+        {
+          "image-name" : "2025-09-13_10-50-19.png",
+          "name" : "2025-09-13_10-50-19",
+          "position" : {
+            "scale" : 0.8,
+            "translation-in-points" : [
+              0,
+              171.57845233979663
+            ]
+          }
+        }
+      ],
+      "shadow" : {
+        "kind" : "neutral",
+        "opacity" : 0.5
+      },
+      "translucency" : {
+        "enabled" : true,
+        "value" : 0.5
+      }
+    },
+    {
+      "blur-material" : null,
+      "layers" : [
+        {
+          "image-name" : "2025-09-13_10-49-23.png",
+          "name" : "2025-09-13_10-49-23",
+          "position" : {
+            "scale" : 1.2,
+            "translation-in-points" : [
+              0,
+              137.8580228051074
+            ]
+          }
+        }
+      ],
+      "position" : {
+        "scale" : 1,
+        "translation-in-points" : [
+          -9.8671875,
+          154.078125
+        ]
+      },
+      "shadow" : {
+        "kind" : "neutral",
+        "opacity" : 0.5
+      },
+      "translucency" : {
+        "enabled" : true,
+        "value" : 0.5
+      }
+    }
+  ],
+  "supported-platforms" : {
+    "circles" : [
+      "watchOS"
+    ],
+    "squares" : "shared"
+  }
+}
