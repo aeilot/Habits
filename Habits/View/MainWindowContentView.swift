@@ -42,7 +42,7 @@ struct MainWindowContentView: View {
         }
         .frame(minWidth: 300, idealWidth: 400, maxWidth: 500, minHeight: 300, alignment: .leading)
         .sheet(isPresented: $showAIChat) {
-            AIChatView()
+            AIChatView(habitEvents: habitEvents)
         }
     }
 
