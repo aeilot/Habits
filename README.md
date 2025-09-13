@@ -1,3 +1,5 @@
+<img width="128" height="128" alt="Habits_Icon-iOS-Dark-1024x1024@1x" src="https://github.com/user-attachments/assets/25f98364-611b-4017-9eee-bd8037e58f50" />
+
 # Habits
 
 > Track your habits effortlessly—right from your macOS Menu Bar!
