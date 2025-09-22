@@ -44,6 +44,6 @@ struct HabitsApp: App {
 class HabitsAppDelegate: NSObject, NSApplicationDelegate{
     func applicationDidFinishLaunching(_ notification: Notification) {
         // Insert code here to initialize your application
-//        NSApp.setActivationPolicy(.accessory)
+        NSApp.setActivationPolicy(.accessory)
     }
 }
