@@ -45,7 +45,10 @@ struct HabitDetailView: View {
                 StreakView(habit: habit)
                 
                 Spacer()
-            }.frame(minWidth: 220)
+            }
+            #if os(macOS)
+            .frame(minWidth: 220)
+            #endif
             .padding()
         }
     }

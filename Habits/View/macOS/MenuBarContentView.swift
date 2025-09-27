@@ -5,6 +5,7 @@
 //  Created by Chenluo Deng on 8/20/25.
 //
 
+#if os(macOS)
 import SwiftUI
 import SwiftData
 
@@ -25,7 +26,7 @@ struct MenuBarContentView: View {
     
     @State var dateText: String = ""
 
-    func buttonAction() {
+    func buttonAction(){
         NSApplication.shared.activate(ignoringOtherApps: true)
         openWindow(id: "mainWindow")
     }
@@ -95,3 +96,5 @@ struct ExtractedView: View {
         }
     }
 }
+
+#endif

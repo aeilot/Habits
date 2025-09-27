@@ -6,7 +6,9 @@
 //
 
 import SwiftUI
+#if os(macOS)
 import AppKit
+#endif
 
 enum StreakViewPeriod: String, CaseIterable {
     case week = "Week"
@@ -62,7 +64,11 @@ struct StreakView: View {
             statisticsView
         }
         .padding()
+        #if os(macOS)
         .background(Color(NSColor.controlBackgroundColor))
+        #else
+        .background(Color(UIColor.systemBackground))
+        #endif
         .cornerRadius(12)
     }
     

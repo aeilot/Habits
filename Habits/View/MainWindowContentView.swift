@@ -24,7 +24,9 @@ struct MainWindowContentView: View {
                     }
                 }.onDelete(perform: deleteItems)
             }
+            #if os(macOS)
             .frame(minWidth: 300)
+            #endif
             .listStyle(.inset)
             .toolbar {
                 ToolbarItem {
@@ -40,7 +42,9 @@ struct MainWindowContentView: View {
             }
             .navigationTitle("Habits")
         }
+        #if os(macOS)
         .frame(minWidth: 300, idealWidth: 400, maxWidth: 500, minHeight: 300, alignment: .leading)
+        #endif
         .sheet(isPresented: $showAIChat) {
             AIChatView()
         }

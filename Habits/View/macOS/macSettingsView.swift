@@ -1,7 +1,9 @@
 import SwiftUI
+
+#if os(macOS)
 import ServiceManagement
 
-struct SettingsView: View {
+struct macSettingView: View {
     @AppStorage("startOnStartup") private var startOnStartup: Bool = false
     @Environment(\.appearsActive) var appearsActive
     
@@ -31,5 +33,6 @@ struct SettingsView: View {
 }
 
 #Preview {
-    SettingsView()
+    macSettingView()
 }
+#endif
