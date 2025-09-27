@@ -26,15 +26,17 @@ struct MainWindowContentView: View {
             }
             #if os(macOS)
             .frame(minWidth: 300)
-            #endif
             .listStyle(.inset)
+            #else
+            .listStyle(.insetGrouped)
+            #endif
             .toolbar {
-                ToolbarItem {
+                ToolbarItem(placement: .automatic) {
                     Button(action: { showAIChat = true }) {
                         Label("Ask AI", systemImage: "message")
                     }
                 }
-                ToolbarItem {
+                ToolbarItem(placement: .automatic) {
                     Button(action: addItem) {
                         Label("Add Item", systemImage: "plus")
                     }

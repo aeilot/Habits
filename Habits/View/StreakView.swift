@@ -235,6 +235,18 @@ struct StreakSquare: View {
             .onHover { hovering in
                 isHovered = hovering
             }
+            .onTapGesture {
+                isHovered.toggle()
+                Timer.scheduledTimer(withTimeInterval: 0.2, repeats: false) { _ in
+                    isHovered.toggle()
+                }
+            }
+            .onLongPressGesture(perform: {
+                isHovered.toggle()
+            }, onPressingChanged: {
+                changed in
+                isHovered = changed
+            })
             .help(tooltipText)
     }
     
