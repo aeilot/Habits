@@ -16,7 +16,7 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		E31FE3E32E544014006805D0 /* Habits */ = {
+		E33B798C2E87DC350030C5DB /* Habits */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = Habits;
 			sourceTree = "<group>";
@@ -39,8 +39,8 @@
 		E31FE3D82E544014006805D0 = {
 			isa = PBXGroup;
 			children = (
-				E31FE3E32E544014006805D0 /* Habits */,
 				E31FE3E22E544014006805D0 /* Products */,
+				E33B798C2E87DC350030C5DB /* Habits */,
 			);
 			sourceTree = "<group>";
 		};
@@ -68,7 +68,7 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				E31FE3E32E544014006805D0 /* Habits */,
+				E33B798C2E87DC350030C5DB /* Habits */,
 			);
 			name = Habits;
 			packageProductDependencies = (

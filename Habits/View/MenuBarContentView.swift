@@ -14,6 +14,8 @@ struct MenuBarContentView: View {
     @Environment(\.modelContext) private var modelContext
     @Query private var habits: [HabitEvent]
     
+//    let timer = Timer.publish(every: 3600, on: .current, in: .common).autoconnect()
+        
     func getFormattedDate() -> String {
         let calendar = Calendar.current
         let today = calendar.startOfDay(for: Date())
@@ -21,6 +23,8 @@ struct MenuBarContentView: View {
         return today.formatted(date: .abbreviated, time: .omitted)
     }
     
+    @State var dateText: String = ""
+
     func buttonAction() {
         NSApplication.shared.activate(ignoringOtherApps: true)
         openWindow(id: "mainWindow")
@@ -29,7 +33,7 @@ struct MenuBarContentView: View {
     var body: some View {
         VStack {
             HStack{
-                Text("\(getFormattedDate())").font(.headline)
+                Text(dateText).font(.headline)
                 Spacer()
                 Button(action: buttonAction) {
                     Image(systemName: "house")
@@ -47,6 +51,9 @@ struct MenuBarContentView: View {
         .padding()
         .frame(maxHeight: 500)
         .frame(width: 300)
+        .onAppear {
+            dateText = getFormattedDate()
+        }
     }
 }
 
