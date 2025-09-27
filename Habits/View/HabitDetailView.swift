@@ -48,6 +48,8 @@ struct HabitDetailView: View {
             }
             #if os(macOS)
             .frame(minWidth: 220)
+            #else
+            .frame(maxWidth: .infinity)
             #endif
             .padding()
         }
