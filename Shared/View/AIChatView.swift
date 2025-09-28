@@ -20,8 +20,6 @@ struct AIChatView: View {
         }
         #if os(macOS)
         .frame(minWidth: 300, minHeight: 400)
-        #else
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
         #endif
         .navigationTitle("AI Chat")
     }

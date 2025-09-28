@@ -9,16 +9,51 @@
 /* Begin PBXBuildFile section */
 		E32B350C2E5B0BAF00F472A7 /* SymbolPicker in Frameworks */ = {isa = PBXBuildFile; productRef = E32B350B2E5B0BAF00F472A7 /* SymbolPicker */; };
 		E387A12C2E74F2F4003D11BE /* OpenAI in Frameworks */ = {isa = PBXBuildFile; productRef = E387A12B2E74F2F4003D11BE /* OpenAI */; };
+		E3E6224A2E89119F00570DA8 /* SymbolPicker in Frameworks */ = {isa = PBXBuildFile; productRef = E3E622492E89119F00570DA8 /* SymbolPicker */; };
+		E3E6224C2E89119F00570DA8 /* OpenAI in Frameworks */ = {isa = PBXBuildFile; productRef = E3E6224B2E89119F00570DA8 /* OpenAI */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		E31FE3E12E544014006805D0 /* Habits.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Habits.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E3E6223A2E8910D400570DA8 /* Habits-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Habits-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		E3E622572E8911B200570DA8 /* Exceptions for "Shared" folder in "Habits-iOS" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Extension/ColorExtension.swift,
+				LLMKit/LLMProvider.swift,
+				Model/HabitEvent.swift,
+				Model/ModelUtils.swift,
+				View/AIChatView.swift,
+				View/HabitDetailView.swift,
+				View/HabitListItemView.swift,
+				View/IconView.swift,
+				View/MainWindowContentView.swift,
+				View/StreakView.swift,
+			);
+			target = E3E622392E8910D400570DA8 /* Habits-iOS */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		E33B798C2E87DC350030C5DB /* Habits */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = Habits;
+			sourceTree = "<group>";
+		};
+		E3E6223B2E8910D400570DA8 /* Habits-iOS */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "Habits-iOS";
+			sourceTree = "<group>";
+		};
+		E3E622472E8910FE00570DA8 /* Shared */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				E3E622572E8911B200570DA8 /* Exceptions for "Shared" folder in "Habits-iOS" target */,
+			);
+			path = Shared;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -33,14 +68,26 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E3E622372E8910D400570DA8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E3E6224C2E89119F00570DA8 /* OpenAI in Frameworks */,
+				E3E6224A2E89119F00570DA8 /* SymbolPicker in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		E31FE3D82E544014006805D0 = {
 			isa = PBXGroup;
 			children = (
+				E3E622472E8910FE00570DA8 /* Shared */,
+				E3E6223B2E8910D400570DA8 /* Habits-iOS */,
 				E31FE3E22E544014006805D0 /* Products */,
 				E33B798C2E87DC350030C5DB /* Habits */,
+				E3E622482E89119F00570DA8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -48,8 +95,16 @@
 			isa = PBXGroup;
 			children = (
 				E31FE3E12E544014006805D0 /* Habits.app */,
+				E3E6223A2E8910D400570DA8 /* Habits-iOS.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		E3E622482E89119F00570DA8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -69,6 +124,7 @@
 			);
 			fileSystemSynchronizedGroups = (
 				E33B798C2E87DC350030C5DB /* Habits */,
+				E3E622472E8910FE00570DA8 /* Shared */,
 			);
 			name = Habits;
 			packageProductDependencies = (
@@ -79,6 +135,30 @@
 			productReference = E31FE3E12E544014006805D0 /* Habits.app */;
 			productType = "com.apple.product-type.application";
 		};
+		E3E622392E8910D400570DA8 /* Habits-iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E3E622442E8910D500570DA8 /* Build configuration list for PBXNativeTarget "Habits-iOS" */;
+			buildPhases = (
+				E3E622362E8910D400570DA8 /* Sources */,
+				E3E622372E8910D400570DA8 /* Frameworks */,
+				E3E622382E8910D400570DA8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				E3E6223B2E8910D400570DA8 /* Habits-iOS */,
+			);
+			name = "Habits-iOS";
+			packageProductDependencies = (
+				E3E622492E89119F00570DA8 /* SymbolPicker */,
+				E3E6224B2E89119F00570DA8 /* OpenAI */,
+			);
+			productName = "Habits-iOS";
+			productReference = E3E6223A2E8910D400570DA8 /* Habits-iOS.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -86,11 +166,14 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1640;
+				LastSwiftUpdateCheck = 2600;
 				LastUpgradeCheck = 1640;
 				TargetAttributes = {
 					E31FE3E02E544014006805D0 = {
 						CreatedOnToolsVersion = 16.4;
+					};
+					E3E622392E8910D400570DA8 = {
+						CreatedOnToolsVersion = 26.0.1;
 					};
 				};
 			};
@@ -113,6 +196,7 @@
 			projectRoot = "";
 			targets = (
 				E31FE3E02E544014006805D0 /* Habits */,
+				E3E622392E8910D400570DA8 /* Habits-iOS */,
 			);
 		};
 /* End PBXProject section */
@@ -125,10 +209,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E3E622382E8910D400570DA8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		E31FE3DD2E544014006805D0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E3E622362E8910D400570DA8 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -261,14 +359,14 @@
 		E31FE3F02E544014006805D0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = "iOS AppIcon";
-				"ASSETCATALOG_COMPILER_APPICON_NAME[sdk=macosx*]" = "macOS AppIcon";
+				ASSETCATALOG_COMPILER_APPICON_NAME = "";
+				"ASSETCATALOG_COMPILER_APPICON_NAME[sdk=macosx*]" = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Habits/Habits.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = N5R4643XP6;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
@@ -276,6 +374,9 @@
 				INFOPLIST_KEY_CFBundleDisplayName = Habits;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_UIStatusBarHidden = NO;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -285,25 +386,24 @@
 				PRODUCT_BUNDLE_IDENTIFIER = top.aeilot.Habits;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = YES;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTED_PLATFORMS = macosx;
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
 		E31FE3F12E544014006805D0 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = "iOS AppIcon";
-				"ASSETCATALOG_COMPILER_APPICON_NAME[sdk=macosx*]" = "macOS AppIcon";
+				ASSETCATALOG_COMPILER_APPICON_NAME = "";
+				"ASSETCATALOG_COMPILER_APPICON_NAME[sdk=macosx*]" = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Habits/Habits.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = N5R4643XP6;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
@@ -311,6 +411,9 @@
 				INFOPLIST_KEY_CFBundleDisplayName = Habits;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_UIStatusBarHidden = NO;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -320,11 +423,89 @@
 				PRODUCT_BUNDLE_IDENTIFIER = top.aeilot.Habits;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = YES;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTED_PLATFORMS = macosx;
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		E3E622452E8910D500570DA8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = N5R4643XP6;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Habits;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "top.aeilot.Habits-iOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		E3E622462E8910D500570DA8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = N5R4643XP6;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Habits;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "top.aeilot.Habits-iOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
@@ -345,6 +526,15 @@
 			buildConfigurations = (
 				E31FE3F02E544014006805D0 /* Debug */,
 				E31FE3F12E544014006805D0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E3E622442E8910D500570DA8 /* Build configuration list for PBXNativeTarget "Habits-iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E3E622452E8910D500570DA8 /* Debug */,
+				E3E622462E8910D500570DA8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -377,6 +567,16 @@
 			productName = SymbolPicker;
 		};
 		E387A12B2E74F2F4003D11BE /* OpenAI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E387A12A2E74F2F4003D11BE /* XCRemoteSwiftPackageReference "OpenAI" */;
+			productName = OpenAI;
+		};
+		E3E622492E89119F00570DA8 /* SymbolPicker */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E32B350A2E5B0BAF00F472A7 /* XCRemoteSwiftPackageReference "SymbolPicker" */;
+			productName = SymbolPicker;
+		};
+		E3E6224B2E89119F00570DA8 /* OpenAI */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = E387A12A2E74F2F4003D11BE /* XCRemoteSwiftPackageReference "OpenAI" */;
 			productName = OpenAI;

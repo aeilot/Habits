@@ -5,7 +5,6 @@
 //  Created by Chenluo Deng on 8/20/25.
 //
 
-#if os(macOS)
 import SwiftUI
 import SwiftData
 
@@ -97,4 +96,3 @@ struct ExtractedView: View {
     }
 }
 
-#endif

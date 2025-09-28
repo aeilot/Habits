@@ -47,7 +47,7 @@ struct MainWindowContentView: View {
         #if os(macOS)
         .frame(minWidth: 300, idealWidth: 400, maxWidth: 500, minHeight: 300, alignment: .leading)
         #else
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
+
         #endif
         .sheet(isPresented: $showAIChat) {
             AIChatView()

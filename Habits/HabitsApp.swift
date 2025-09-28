@@ -10,11 +10,7 @@ import SwiftData
 
 @main
 struct HabitsApp: App {
-    #if os(macOS)
     @NSApplicationDelegateAdaptor(HabitsAppDelegate.self) var appDelegate
-    #else
-    @UIApplicationDelegateAdaptor(HabitAppDelegate.self) var appDelegate
-    #endif
     
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
@@ -31,7 +27,6 @@ struct HabitsApp: App {
 
     var body: some Scene {
        
-        #if os(macOS)
         Window("Habits", id: "mainWindow"){
             MainWindowContentView()
                 .modelContainer(sharedModelContainer)
@@ -42,28 +37,14 @@ struct HabitsApp: App {
         }.modelContainer(sharedModelContainer).menuBarExtraStyle(.window)
         
         Window("Settings", id: "settingsWindow") {
-            macSettingView()
+            macSettingView().frame(minWidth: 300, idealWidth: 400, maxWidth: 500, minHeight: 300, alignment: .leading)
         }.keyboardShortcut(",").defaultSize(width: 300, height: 120)
-        #else
-        WindowGroup {
-            MainWindowContentView()
-                .modelContainer(sharedModelContainer)
-        }
-        #endif
     }
 }
 
-#if os(macOS)
 class HabitsAppDelegate: NSObject, NSApplicationDelegate{
     func applicationDidFinishLaunching(_ notification: Notification) {
         // Insert code here to initialize your application
         NSApp.setActivationPolicy(.accessory)
     }
 }
-#else
-class HabitAppDelegate: NSObject, UIApplicationDelegate {
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
-        return true
-    }
-}
-#endif

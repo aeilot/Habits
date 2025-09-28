@@ -20,7 +20,7 @@ struct HabitDetailView: View {
                     IconView(habit: habit).sheet(isPresented: $isPresented, content: {
                         VStack(alignment: .center) {
                             SymbolPicker(symbol: $habit.iconSystemName)
-                            ColorPicker("Color", selection: $habit.color, supportsOpacity: false).background(.regularMaterial)
+                            ColorPicker("Color", selection: $habit.color, supportsOpacity: false).background(.regularMaterial).padding(.horizontal)
                             Spacer()
                         }.background(.regularMaterial)
                     }).padding()
@@ -48,10 +48,7 @@ struct HabitDetailView: View {
             }
             #if os(macOS)
             .frame(minWidth: 220)
-            #else
-            .frame(maxWidth: .infinity)
             #endif
-            .padding()
         }
     }
 }

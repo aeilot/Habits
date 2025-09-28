@@ -1,6 +1,5 @@
 import SwiftUI
 
-#if os(macOS)
 import ServiceManagement
 
 struct macSettingView: View {
@@ -35,4 +34,3 @@ struct macSettingView: View {
 #Preview {
     macSettingView()
 }
-#endif
