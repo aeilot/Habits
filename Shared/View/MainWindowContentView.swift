@@ -45,7 +45,7 @@ struct MainWindowContentView: View {
             .navigationTitle("Habits")
         }
         #if os(macOS)
-        .frame(minWidth: 300, idealWidth: 400, maxWidth: 500, minHeight: 300, alignment: .leading)
+        .frame(minWidth: 400, idealWidth: 400, maxWidth: 500, minHeight: 300, alignment: .leading)
         #else
 
         #endif
