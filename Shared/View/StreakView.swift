@@ -83,6 +83,7 @@ struct StreakView: View {
                         .frame(width: 30)
 
                     StreakSquare(
+                        habit: habit,
                         date: dayData.date,
                         completed: dayData.completed,
                         color: habit.color,
@@ -117,6 +118,7 @@ struct StreakView: View {
             LazyVGrid(columns: columns, spacing: 2) {
                 ForEach(Array(streakData.enumerated()), id: \.offset) { index, dayData in
                     StreakSquare(
+                        habit: habit,
                         date: dayData.date,
                         completed: dayData.completed,
                         color: habit.color,
@@ -137,6 +139,7 @@ struct StreakView: View {
                             .foregroundColor(.secondary)
                         
                         StreakSquare(
+                            habit: habit,
                             date: dayData.date,
                             completed: dayData.completed,
                             color: habit.color,
@@ -199,12 +202,20 @@ struct StreakView: View {
 }
 
 struct StreakSquare: View {
+    let habit: HabitEvent
     let date: Date
     let completed: Bool
     let color: Color
     let size: CGFloat
     
     @State private var isHovered = false
+    
+    private func laterThanToday() -> Bool {
+        let calendar = Calendar.current
+        let today = calendar.startOfDay(for: Date())
+        let targetDate = calendar.startOfDay(for: date)
+        return targetDate > today
+    }
     
     private var fillColor: Color {
         if completed {
@@ -248,6 +259,25 @@ struct StreakSquare: View {
                 isHovered = changed
             })
             .help(tooltipText)
+            .contextMenu{
+                if !completed && !laterThanToday() {
+                    Button("Mark as Completed") {
+                        withAnimation {
+                            habit.checkDates.append(date)
+                        }
+                    }
+                }
+                if completed {
+                    Button("Unmark Completion") {
+                        withAnimation {
+                            habit.checkDates.removeAll { calendarDate in
+                                let calendar = Calendar.current
+                                return calendar.isDate(calendarDate, inSameDayAs: date)
+                            }
+                        }
+                    }
+                }
+            }
     }
     
     private var tooltipText: String {

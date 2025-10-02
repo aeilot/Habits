@@ -12,7 +12,7 @@ struct MainWindowContentView: View {
     @Environment(\.modelContext) private var modelContext
     @Query private var habitEvents: [HabitEvent]
     @State private var showAIChat: Bool = false
-
+    
     var body: some View {
         NavigationStack {
             List {

@@ -76,7 +76,7 @@ final class HabitEvent: Codable {
             if newBool {
                 checkDates.append(today)
             } else {
-                checkDates.removeLast()
+                checkDates.removeAll(where: { calendar.isDate($0, inSameDayAs: today) } )
             }
         }
     }
