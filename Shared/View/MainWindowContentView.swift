@@ -12,6 +12,7 @@ struct MainWindowContentView: View {
     @Environment(\.modelContext) private var modelContext
     @Query private var habitEvents: [HabitEvent]
     @State private var showAIChat: Bool = false
+    @AppStorage("aiEnabled") private var aiEnabled: Bool = false
     
     var body: some View {
         NavigationStack {
@@ -31,9 +32,11 @@ struct MainWindowContentView: View {
             .listStyle(.insetGrouped)
             #endif
             .toolbar {
-                ToolbarItem(placement: .automatic) {
-                    Button(action: { showAIChat = true }) {
-                        Label("Ask AI", systemImage: "message")
+                if aiEnabled{
+                    ToolbarItem(placement: .automatic) {
+                        Button(action: { showAIChat = true }) {
+                            Label("Ask AI", systemImage: "message")
+                        }
                     }
                 }
                 ToolbarItem(placement: .automatic) {

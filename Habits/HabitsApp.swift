@@ -38,7 +38,7 @@ struct HabitsApp: App {
         
         Window("Settings", id: "settingsWindow") {
             macSettingView().frame(minWidth: 300, idealWidth: 400, maxWidth: 500, minHeight: 300, alignment: .leading)
-        }.keyboardShortcut(",").defaultSize(width: 300, height: 120)
+        }.keyboardShortcut(",").defaultSize(width: 300, height: 200)
     }
 }
 
