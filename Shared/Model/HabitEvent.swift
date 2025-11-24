@@ -17,6 +17,7 @@ final class HabitEvent: Codable {
         case colorHex
         case iconSystemName
         case checkDates
+        case currentStreak
     }
     
     public var habitName: String
@@ -113,6 +114,7 @@ final class HabitEvent: Codable {
         try! container.encode(colorHex, forKey: .colorHex)
         try! container.encode(iconSystemName, forKey: .iconSystemName)
         try! container.encode(checkDates, forKey: .checkDates)
+        try! container.encode(self.streak, forKey: .currentStreak)
     }
     
     // MARK: - Streak Data Generation Methods

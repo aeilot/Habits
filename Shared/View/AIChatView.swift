@@ -1,5 +1,6 @@
 import SwiftUI
 import OpenAI
+import SwiftData
 
 struct AIChatView: View {
     @State private var messages: [String] = []
@@ -9,6 +10,7 @@ struct AIChatView: View {
     @AppStorage("aiEnabled") private var aiEnabled: Bool = false
     @AppStorage("model") private var model: String = ""
     @State private var isLoading: Bool = false
+    @Query private var habitEvents: [HabitEvent]
     
     var body: some View {
         VStack {
@@ -56,11 +58,27 @@ struct AIChatView: View {
                     parsingOptions: .relaxed
                 )
                 
+                let encoder = JSONEncoder()
+                encoder.dateEncodingStrategy = .iso8601
+                encoder.outputFormatting = .prettyPrinted
+                let raw_data = try encoder.encode(habitEvents)
+
+                guard let data = String(data: raw_data, encoding: .utf8) else {
+                    throw NSError(domain: "Invalid JSON", code: -1)
+                }
+                
+                #if DEBUG
+                print(data)
+                #endif
+                
                 let client = OpenAI(configuration: configuration)
                 
                 let query = ChatQuery(
                     messages: [
-                        .system(.init(content: .textContent("Best Picture winner at the 2011 Oscars"))),
+                        .system(.init(content: .textContent("""
+You are a Habit agent providing suggestions in a friendly tone for the user. The user has kept track of their Habits data, stored in this JSON: \(data)
+Your task is to answer the user's queries according to the given data.
+"""))),
                         .user(.init(content: .string(input)))
                     ],
                     model: model

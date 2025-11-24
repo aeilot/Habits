@@ -30,7 +30,7 @@ struct macSettingView: View {
                     if aiEnabled {
                         TextField("Base Url", text: $baseUrl)
                         TextField("Model", text: $model)
-                        TextField("API Key", text: $apiKey).textContentType(.password)
+                        SecureField("API Key", text: $apiKey)
                     }
                     Text("AI Configuration for Habits Agent")
                         .font(.callout)
