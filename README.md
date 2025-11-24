@@ -10,7 +10,7 @@
 
 - ✅ **Track daily habits:** Create, edit, and manage your habits with a clean, minimal interface.
 - ✅ **Streak View:** Stay motivated with visual streak tracking and progress indicators.
-- 🚧 **AI Agent (Coming Soon):** Let AI help you set goals, analyze your progress, and suggest improvements.
+- ✅ **AI Agent:** Let AI help you set goals, analyze your progress, and suggest improvements.
 
 ## Getting Started
 
@@ -33,7 +33,7 @@
 
 - [x] Basic Features
 - [x] StreakView
-- [ ] AI Agent (in development)
+- [x] AI Agent
 
 ## Contributing
 
